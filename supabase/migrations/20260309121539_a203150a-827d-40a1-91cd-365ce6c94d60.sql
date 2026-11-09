@@ -1,0 +1,1 @@
+ALTER TABLE public.categories ADD COLUMN is_top boolean NOT NULL DEFAULT false;

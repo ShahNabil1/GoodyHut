@@ -1,0 +1,1 @@
+ALTER TYPE public.order_status ADD VALUE IF NOT EXISTS 'pickup_requested' AFTER 'at_bd_warehouse';

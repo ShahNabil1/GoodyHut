@@ -1,0 +1,1 @@
+ALTER TABLE public.cart_items ADD COLUMN user_id uuid;
