@@ -1,0 +1,166 @@
+/* Fonts loaded via <link> in index.html for non-blocking preload */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* GoodyHut Brand — extracted from logo */
+    /* Primary: Deep Teal */
+    --primary: 197 55% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Warm Orange */
+    --secondary: 28 85% 58%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Accent: Blended gradient midpoint */
+    --accent: 35 70% 55%;
+    --accent-foreground: 0 0% 10%;
+
+    /* Surfaces */
+    --background: 38 25% 98%;
+    --foreground: 220 25% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 10%;
+
+    --muted: 210 15% 94%;
+    --muted-foreground: 215 14% 46%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 25% 90%;
+    --input: 214 25% 90%;
+    --ring: 197 55% 42%;
+
+    --radius: 0.75rem;
+
+    /* Viewport + mobile nav stability tokens */
+    --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-area-bottom-max: env(safe-area-max-inset-bottom, 0px);
+    --app-safe-bottom: max(var(--safe-area-bottom), var(--safe-area-bottom-max));
+    --mobile-nav-height: 4rem;
+    --mobile-nav-total-height: calc(var(--mobile-nav-height) + var(--app-safe-bottom));
+
+    /* Custom GoodyHut tokens */
+    --gradient-brand: linear-gradient(135deg, hsl(197 55% 42%), hsl(28 85% 58%));
+    --gradient-brand-hover: linear-gradient(135deg, hsl(197 55% 38%), hsl(28 85% 52%));
+    --gradient-hero-overlay: linear-gradient(135deg, hsla(197, 55%, 15%, 0.85), hsla(28, 85%, 20%, 0.7));
+    --shadow-glass: 0 8px 32px hsla(197, 55%, 42%, 0.08);
+    --shadow-card: 0 4px 24px hsla(220, 25%, 10%, 0.06);
+    --shadow-card-hover: 0 12px 40px hsla(220, 25%, 10%, 0.12);
+    --shadow-elevated: 0 20px 60px hsla(220, 25%, 10%, 0.1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  /* Prevent layout jitter from mobile browser UI changes */
+  html {
+    height: -webkit-fill-available;
+    overflow-y: scroll;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-variant-numeric: tabular-nums;
+    font-size: 1.0625rem; /* 17px — slightly larger for SolaimanLipi readability */
+    /* Use min-height that accounts for dynamic browser chrome */
+    min-height: 100dvh;
+    min-height: -webkit-fill-available;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'SolaimanLipi', 'Poppins', sans-serif;
+    @apply tracking-tight;
+  }
+  /* Bump tiny text sizes for Bengali readability */
+  .text-xs {
+    font-size: 0.8125rem; /* 13px instead of 12px */
+    line-height: 1.25rem;
+  }
+  .text-\[10px\] {
+    font-size: 11px !important;
+  }
+  .text-\[11px\] {
+    font-size: 12px !important;
+  }
+  .text-sm {
+    font-size: 0.9375rem; /* 15px instead of 14px */
+    line-height: 1.375rem;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-card/70 backdrop-blur-xl border border-border/50;
+    box-shadow: var(--shadow-glass);
+  }
+  .glass-strong {
+    @apply bg-card/85 backdrop-blur-2xl border border-border/60;
+    box-shadow: var(--shadow-glass);
+  }
+  .gradient-brand {
+    background: var(--gradient-brand);
+  }
+  .gradient-brand-hover {
+    background: var(--gradient-brand-hover);
+  }
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  .shadow-card-hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  /* CTA magnetic hover */
+  .cta-magnetic {
+    @apply relative overflow-hidden;
+  }
+  .cta-magnetic::before {
+    content: '';
+    @apply absolute inset-0 rounded-full opacity-0 transition-opacity duration-500;
+    background: var(--gradient-brand-hover);
+  }
+  .cta-magnetic:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Marquee */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+
+  /* Skeleton shimmer */
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .skeleton-shimmer {
+    background: linear-gradient(90deg, hsl(var(--muted)) 25%, hsl(var(--muted)/0.5) 50%, hsl(var(--muted)) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+}
