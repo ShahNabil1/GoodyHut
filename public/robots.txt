@@ -1,0 +1,33 @@
+# GoodyHut — Robots.txt
+# https://www.goodyhut.bd
+
+User-agent: *
+Allow: /
+
+# Disallow sensitive/private areas
+Disallow: /checkout
+Disallow: /payment
+Disallow: /cart
+Disallow: /admin
+Disallow: /dev
+Disallow: /profile
+Disallow: /track-order
+
+# Allow search engine bots explicitly
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Sitemap
+Sitemap: https://www.goodyhut.bd/sitemap.xml

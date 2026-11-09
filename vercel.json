@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/sitemap.xml",
+      "destination": "https://oeyprcwaslsmucjsukbz.supabase.co/functions/v1/sitemap"
+    },
+    {
+      "source": "/api/catalog",
+      "destination": "https://oeyprcwaslsmucjsukbz.supabase.co/functions/v1/meta-catalog"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
